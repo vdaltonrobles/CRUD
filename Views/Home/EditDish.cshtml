@@ -1,0 +1,70 @@
+@model Dish
+@{
+    ViewData["Title"] = "Edit Dish";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Edit</h1>
+</div>
+<a href="/">Home</a>
+<form action="/process2/@ViewBag.EditDish.DishId" method="post">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label>Chef's Name</label>
+                <input asp-for="Chef" class="form-control" value="@ViewBag.EditDish.Chef">
+                <span asp-validation-for="Chef"></span>
+            </div>
+            <div class="form-group">
+                <label>Name of Dish</label>
+                <input asp-for="Name" class="form-control" value="@ViewBag.EditDish.Name">
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group">
+                <label># of Calories</label>
+                <input asp-for="Calories" class="form-control" value="@ViewBag.EditDish.Calories">
+                <span asp-validation-for="Calories"></span>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label>Tastiness</label>
+                <select class="form-control" asp-for="Tastiness">
+                    <option></option>
+                    @{
+                        if (@ViewBag.EditDish.Tastiness == 1)
+                        {
+                            <option value="1" selected>1</option>
+                        }                        
+                        if (@ViewBag.EditDish.Tastiness == 2)
+                        {
+                            <option value="2" selected>2</option>
+                        }                        
+                        if (@ViewBag.EditDish.Tastiness == 3)
+                        {
+                            <option value="3" selected>3</option>
+                        }
+                        if (@ViewBag.EditDish.Tastiness == 4)
+                        {
+                            <option value="4" selected>4</option>
+                        }
+                        if (@ViewBag.EditDish.Tastiness == 5)
+                        {
+                            <option value="5" selected>5</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="Tastiness"></span>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" name="Description" rows="3">@ViewBag.EditDish.Description</textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+            <input type="submit" value="Edit Dish" class="btn btn-primary">
+        </div>
+    </div>
+</form>
+
